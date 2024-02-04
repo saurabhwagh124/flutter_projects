@@ -54,7 +54,6 @@ class _Assignment2State extends State<Assignment2>{
                 ),
 
                 //Box 2
-                
 
               ],
             )
