@@ -1,3 +1,3 @@
-# flutter_project_19_2
+# Quiz App Final using model class
 
 A new Flutter project.
