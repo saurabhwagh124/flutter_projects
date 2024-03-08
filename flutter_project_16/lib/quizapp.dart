@@ -13,6 +13,7 @@ class _QuizApp extends State<QuizApp>{
   
   @override
   Widget build(BuildContext context){
+    int que = 1;
     return Scaffold(
       appBar: AppBar(
         title: const Text("QuizApp"),
@@ -21,78 +22,37 @@ class _QuizApp extends State<QuizApp>{
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          SizedBox(
-            width: double.infinity,
-          ),
-          Container(
-            height: 80,
+          // const SizedBox(
+          //   height: 20,
+          // ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            const Text("Question: ",style: TextStyle(fontWeight: FontWeight.w700),),
+            Text("$que/10",style: TextStyle(fontWeight: FontWeight.w500),),
+          ],),
+          const SizedBox(
             width: 300,
-            child: const Text(style: TextStyle(fontSize: 22),"1. Is the AppBar modifiable?")
+            height: 40,
+            child: const Text("1. What colour is your porsche?", style: TextStyle(fontWeight: FontWeight.w600),),
           ),
-          Container(
-            height: 80,
-            width: 220,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Radio(
-                  value: 1,
-                  groupValue: _value,
-                  onChanged:(value){
-                    setState((){
-                      _value = value!;
-                    });
-                  },
-                ),
-                const Text("1. Yes it is modifiable.")
-              ],
-            ),
+          ElevatedButton(onPressed: (){},
+          child: const Text("1. Grey"),
           ),
-          Container(
-            height: 80,
-            width: 220,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Radio(
-                  value: 2,
-                  groupValue: _value,
-                  onChanged:(value){
-                    setState((){
-                      _value = value!;
-                    });
-                  },
-                ),
-                const Text("2. Can't Say."),
-              ],
-            ),
+          ElevatedButton(onPressed: (){},
+          child: const Text("2. Black"),
           ),
-          Container(
-            height: 80,
-            width: 220,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Radio(
-                  value: 3,
-                  groupValue: _value,
-                  onChanged:(value){
-                    setState((){
-                      _value = value!;
-                    });
-                  },
-                ),
-                const Text("3. No not at all."),
-              ],
-            ),
+          ElevatedButton(onPressed: (){},
+          child: const Text("3. Don't have one"),
           ),
-          ElevatedButton(
-            onPressed: null,
-             child: const Text("Submit"),
-          ),          
         ],
       ),
-
+      floatingActionButton: FloatingActionButton(onPressed: (){setState(() {
+        que++;
+      });
+      },
+      child: const Text("Next"),
+      ),
     );
     
   }
