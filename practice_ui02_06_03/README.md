@@ -1,3 +1,3 @@
-# practice_ui02_06_03
+# Practice Figma Ui 02
 
 A new Flutter project.
