@@ -1,3 +1,3 @@
-# hackathon_01_date_25_02
+# onspot codes 01
 
 A new Flutter project.
