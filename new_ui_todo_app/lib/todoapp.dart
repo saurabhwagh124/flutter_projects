@@ -10,7 +10,10 @@ class ToDoApp extends StatefulWidget{
   State createState() => _ToDoAppState();
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3fba7e5ffc34b6ef62ba795ccf82a2fc458a390a
 class _ToDoAppState extends State{
   var listColors =  [
     Colors.lime[100],
