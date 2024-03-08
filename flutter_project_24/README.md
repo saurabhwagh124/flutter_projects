@@ -1,3 +1,3 @@
-# flutter_project_24
+# iterable portfolio
 
 A new Flutter project.
