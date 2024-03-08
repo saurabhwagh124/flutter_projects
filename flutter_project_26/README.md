@@ -1,3 +1,2 @@
-# flutter_project_26
-
+# Widget lifecycle testing
 A new Flutter project.
