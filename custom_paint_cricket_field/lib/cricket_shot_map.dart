@@ -32,9 +32,20 @@ class _CricketRunMapState extends State<CricketRunMap> {
     'Long Off',
     'Deep Cover',
     'Deep Point',
-    'Third Man',
+    'Deep\nThird Man',
     'Deep\nFine Leg',
     'Deep\nSquare Leg',
+  ];
+
+  final List<String> rightHandMidPositionNames = [
+    'Mid Wicket',
+    'Mid On',
+    'Mid Off',
+    'Mid Cover',
+    'Mid Point',
+    'Third Man',
+    'Mid\nFine\nLeg',
+    'Mid\nSquare\nLeg',
   ];
 
   final List<String> leftHandPositionNames = [
@@ -44,8 +55,19 @@ class _CricketRunMapState extends State<CricketRunMap> {
     'Deep Mid\nWicket',
     'Deep\nSquare Leg',
     'Deep\nFine Leg',
-    'Third Man',
+    'Deep\nThird Man',
     'Deep Point',
+  ];
+
+  final List<String> leftHandMidPositionNames = [
+    'Mid Cover',
+    'Mid Off',
+    'Mid On',
+    'Mid Wicket',
+    'Mid\nSquare\nLeg',
+    'Mid\nFine\nLeg',
+    'Third Man',
+    'Mid Point'
   ];
 
   Offset? tapPoint;
@@ -107,6 +129,9 @@ class _CricketRunMapState extends State<CricketRunMap> {
                     widget.isRightHand
                         ? rightHandPositionNames
                         : leftHandPositionNames,
+                      widget.isRightHand
+                        ? rightHandMidPositionNames
+                        : leftHandMidPositionNames,
                     tapPoint: tapPoint,
                     selectedPosition: selectedPosition),
               ),

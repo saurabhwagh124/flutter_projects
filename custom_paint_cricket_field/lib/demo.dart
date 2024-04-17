@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'cricket_shot_map.dart';
@@ -32,9 +34,9 @@ class _ShotAreaState extends State{
         child: CricketRunMap(
           height: 350,
           width: 350,
-          isRightHand: true,
+          isRightHand: false,
           onPositionSelected: (String selectedPosition){
-            print('Selected Position: $selectedPosition');
+            log ("Selected Position: $selectedPosition");
           },
         ),
       ),
