@@ -34,7 +34,7 @@ class _ShotAreaState extends State{
         child: CricketRunMap(
           height: 350,
           width: 350,
-          isRightHand: false,
+          isRightHand: true,
           onPositionSelected: (String selectedPosition){
             log ("Selected Position: $selectedPosition");
           },

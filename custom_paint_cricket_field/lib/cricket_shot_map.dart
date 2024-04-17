@@ -1,6 +1,7 @@
 library cricket_run_map;
 
-import 'dart:math';
+import 'dart:developer';
+import 'dart:math' as m;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -77,26 +78,49 @@ class _CricketRunMapState extends State<CricketRunMap> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: (TapDownDetails details) {
+        // log("widget width: ${widget.width}, widget height: ${widget.height}");
+        // log("widget width/4 - 6: ${widget.width/4-6}");
         setState(() {
           tapPoint = details.localPosition;
+          // log("tapPoint: $tapPoint, dx: ${tapPoint!.dx}, dy: ${tapPoint!.dy}");
           if (tapPoint != null) {
             final dx = tapPoint!.dx - (widget.width / 2);
             final dy = tapPoint!.dy - (widget.height / 2);
-            final angle = atan2(dy, dx);
-            const sliceAngle = 2 * pi / 8;
-            double normalizedAngle = angle < 0 ? (2 * pi + angle) : angle;
-            normalizedAngle = (normalizedAngle + (4 * pi / 2)) % (2 * pi);
+            log("dy: $dy, dx: $dx");
+            final angle = m.atan2(dy, dx);
+            const sliceAngle = 2 * m.pi / 8;
+            double normalizedAngle = angle < 0 ? (2 * m.pi + angle) : angle;
+            normalizedAngle = (normalizedAngle + (4 * m.pi / 2)) % (2 * m.pi);
             selectedPosition = (normalizedAngle / sliceAngle).floor();
-
+            log("$selectedPosition");
+            
             // Call the callback with the selected position name
             if (widget.isRightHand == true) {
-              widget.onPositionSelected.call(
-                  rightHandPositionNames[selectedPosition!]
-                      .replaceAll("\n", " "));
+              if(dx.abs()>widget.width / 4.2 - 6 || dy.abs()>widget.height / 4.2 - 6){
+                log("In outer field");
+                widget.onPositionSelected.call(
+                    rightHandPositionNames[selectedPosition!]
+                        .replaceAll("\n", " "));
+              }else{
+                log("In inner field");
+                widget.onPositionSelected.call(
+                  rightHandMidPositionNames[selectedPosition!]
+                      .replaceAll("\n", "")
+                );
+              }
             } else {
-              widget.onPositionSelected.call(
-                  leftHandPositionNames[selectedPosition!]
-                      .replaceAll("\n", " "));
+              if(dx.abs()>widget.width / 4.2 - 6 || dy.abs()>widget.height / 4.2 - 6){
+                log("In outer field");
+                widget.onPositionSelected.call(
+                    leftHandPositionNames[selectedPosition!]
+                        .replaceAll("\n", " "));
+              }else{
+                log("In inner field");
+                widget.onPositionSelected.call(
+                  leftHandMidPositionNames[selectedPosition!]
+                      .replaceAll("\n", "")
+                );
+              }
             }
           }
         });
@@ -171,7 +195,7 @@ class _CricketRunMapState extends State<CricketRunMap> {
                               ? SvgPicture.asset("assets/batsman.svg", fit: BoxFit.cover,)
                               : Transform(
                                   alignment: Alignment.center,
-                                  transform: Matrix4.rotationY(pi),
+                                  transform: Matrix4.rotationY(m.pi),
                                   child:  SvgPicture.asset("assets/batsman.svg", fit: BoxFit.cover,)
                               )
                       )

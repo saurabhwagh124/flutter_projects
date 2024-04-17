@@ -22,6 +22,7 @@ class RunMapPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    log("Size:$size");
     final double radius = size.width / 2;
     final Offset center = Offset(size.width / 2, size.height / 2);
     final Paint circlePaint = Paint()
@@ -65,7 +66,7 @@ class RunMapPainter extends CustomPainter {
         false,
       );
       path.close();
-
+      log("${radius/2}");
       // Set color based on selection
       if (selectedPosition != null && i == selectedPosition) {
         paint.color = selectedPositionColor;
@@ -102,7 +103,7 @@ class RunMapPainter extends CustomPainter {
       );
 
       textPainter.paint(canvas, textOffset);
-      log("$textOffset");
+      // log("$textOffset");
     }
 
     for (var i = 0; i < midPositionNames.length; i++) {
@@ -135,7 +136,7 @@ class RunMapPainter extends CustomPainter {
         midTextCenterY - midTextPainter.height / 2
       );
       midTextPainter.paint(canvas, midTextOffset);
-      log("$midTextOffset");
+      // log("$midTextOffset");
     }
 
     // Draw lines from center to tap point
@@ -158,4 +159,5 @@ class RunMapPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
+
 }
